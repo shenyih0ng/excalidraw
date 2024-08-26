@@ -75,6 +75,7 @@ export type ActionName =
   | "changeFontSize"
   | "toggleCanvasMenu"
   | "toggleEditMenu"
+  | "toggleSceneMenu"
   | "undo"
   | "redo"
   | "finalize"

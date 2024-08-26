@@ -1,4 +1,9 @@
-import { HamburgerMenuIcon, HelpIconThin, palette } from "../components/icons";
+import {
+  HamburgerMenuIcon,
+  HelpIconThin,
+  LoadIcon,
+  palette,
+} from "../components/icons";
 import { ToolButton } from "../components/ToolButton";
 import { t } from "../i18n";
 import { showSelectedShapeActions, getNonDeletedElements } from "../element";
@@ -78,4 +83,29 @@ export const actionShortcuts = register({
     };
   },
   keyTest: (event) => event.key === KEYS.QUESTION_MARK,
+});
+
+export const actionSceneMenu = register({
+  name: "toggleSceneMenu",
+  label: "welcomeScreen.defaults.sceneMenuHint",
+  icon: LoadIcon,
+  viewMode: true,
+  trackEvent: { category: "menu", action: "toggleLoadSceneDialog" },
+  perform: (_elements, appState, _, { focusContainer }) => {
+    if (appState.openDialog?.name === "sceneMenu") {
+      focusContainer();
+    }
+    return {
+      appState: {
+        ...appState,
+        openDialog:
+          appState.openDialog?.name === "sceneMenu"
+            ? null
+            : {
+                name: "sceneMenu",
+              },
+      },
+      storeAction: StoreAction.NONE,
+    };
+  },
 });

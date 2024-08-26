@@ -1,4 +1,4 @@
-import { actionLoadScene, actionShortcuts } from "../../actions";
+import { actionSceneMenu, actionShortcuts } from "../../actions";
 import { getShortcutFromShortcutName } from "../../actions/shortcuts";
 import { t, useI18n } from "../../i18n";
 import { useDevice, useExcalidrawActionManager } from "../App";
@@ -155,8 +155,8 @@ const MenuItemLoadScene = () => {
 
   return (
     <WelcomeScreenMenuItem
-      onSelect={() => actionManager.executeAction(actionLoadScene)}
-      shortcut={getShortcutFromShortcutName("loadScene")}
+      onSelect={() => actionManager.executeAction(actionSceneMenu)}
+      shortcut={getShortcutFromShortcutName("toggleSceneMenu")}
       icon={LoadIcon}
     >
       {t("buttons.load")}

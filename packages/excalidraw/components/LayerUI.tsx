@@ -60,6 +60,7 @@ import { LaserPointerButton } from "./LaserPointerButton";
 import { TTDDialog } from "./TTDDialog/TTDDialog";
 import { Stats } from "./Stats";
 import { actionToggleStats } from "../actions";
+import { SceneMenuDialog } from "./SceneMenuDialog";
 
 import "./LayerUI.scss";
 import "./Toolbar.scss";
@@ -185,6 +186,19 @@ const LayerUI = ({
         onExportImage={onExportImage}
         onCloseRequest={() => setAppState({ openDialog: null })}
         name={app.getName()}
+      />
+    );
+  };
+
+  const renderSceneMenuDialog = () => {
+    if (appState.openDialog?.name !== "sceneMenu") {
+      return null;
+    }
+
+    return (
+      <SceneMenuDialog
+        actionManager={actionManager}
+        onCloseRequest={() => setAppState({ openDialog: null })}
       />
     );
   };
@@ -474,6 +488,7 @@ const LayerUI = ({
       <tunnels.OverwriteConfirmDialogTunnel.Out />
       {renderImageExportDialog()}
       {renderJSONExportDialog()}
+      {renderSceneMenuDialog()}
       {appState.pasteDialog.shown && (
         <PasteChartDialog
           setAppState={setAppState}

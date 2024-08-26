@@ -304,6 +304,7 @@ function CommandPaletteInner({
       ].map((action) => actionToCommand(action, DEFAULT_CATEGORIES.tools));
 
       const editorCommands: CommandPaletteItem[] = [
+        actionManager.actions.toggleSceneMenu,
         actionManager.actions.undo,
         actionManager.actions.redo,
         actionManager.actions.zoomIn,

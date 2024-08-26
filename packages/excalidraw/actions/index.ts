@@ -45,6 +45,7 @@ export {
   actionToggleCanvasMenu,
   actionToggleEditMenu,
   actionShortcuts,
+  actionSceneMenu,
 } from "./actionMenu";
 
 export { actionGroup, actionUngroup } from "./actionGroup";

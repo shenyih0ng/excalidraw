@@ -8,7 +8,6 @@ export type ShortcutName =
   | SubtypeOf<
       ActionName,
       | "toggleTheme"
-      | "loadScene"
       | "clearCanvas"
       | "cut"
       | "copy"
@@ -48,6 +47,7 @@ export type ShortcutName =
       | "saveFileToDisk"
       | "saveToActiveFile"
       | "toggleShortcuts"
+      | "toggleSceneMenu"
     >
   | "saveScene"
   | "imageExport"
@@ -57,7 +57,7 @@ export type ShortcutName =
 const shortcutMap: Record<ShortcutName, string[]> = {
   toggleTheme: [getShortcutKey("Shift+Alt+D")],
   saveScene: [getShortcutKey("CtrlOrCmd+S")],
-  loadScene: [getShortcutKey("CtrlOrCmd+O")],
+  toggleSceneMenu: [getShortcutKey("CtrlOrCmd+O")],
   clearCanvas: [getShortcutKey("CtrlOrCmd+Delete")],
   imageExport: [getShortcutKey("CtrlOrCmd+Shift+E")],
   commandPalette: [

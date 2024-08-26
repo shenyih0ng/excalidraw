@@ -401,6 +401,12 @@
     "movePageUpDown": "Move page up/down",
     "movePageLeftRight": "Move page left/right"
   },
+  "sceneMenuDialog": {
+    "header": "Open scene",
+    "label": {
+      "loadLocal": "Open a local scene"
+    }
+  },
   "clearCanvasDialog": {
     "title": "Clear canvas"
   },
@@ -525,6 +531,7 @@
       "menuHint": "Export, preferences, and more...",
       "center_heading": "Diagrams. Made. Simple.",
       "toolbarHint": "Pick a tool & Start drawing!",
+      "sceneMenuHint": "Open a scene",
       "helpHint": "Shortcuts & help"
     }
   },

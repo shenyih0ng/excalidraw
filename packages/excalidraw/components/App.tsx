@@ -4099,6 +4099,13 @@ class App extends React.Component<AppProps, AppState> {
         event.preventDefault();
         this.setState({ openDialog: { name: "imageExport" } });
         return;
+      } else if (
+        event.key.toLowerCase() === KEYS.O &&
+        event[KEYS.CTRL_OR_CMD]
+      ) {
+        event.preventDefault();
+        this.setState({ openDialog: { name: "sceneMenu" } });
+        return;
       }
 
       if (event.key === KEYS.PAGE_UP || event.key === KEYS.PAGE_DOWN) {

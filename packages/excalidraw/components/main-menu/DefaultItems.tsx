@@ -27,6 +27,7 @@ import {
   actionClearCanvas,
   actionLoadScene,
   actionSaveToActiveFile,
+  actionSceneMenu,
   actionShortcuts,
   actionToggleSearchMenu,
   actionToggleTheme,
@@ -69,7 +70,7 @@ export const LoadScene = () => {
         ),
       }))
     ) {
-      actionManager.executeAction(actionLoadScene);
+      actionManager.executeAction(actionSceneMenu);
     }
   };
 
@@ -78,7 +79,7 @@ export const LoadScene = () => {
       icon={LoadIcon}
       onSelect={handleSelect}
       data-testid="load-button"
-      shortcut={getShortcutFromShortcutName("loadScene")}
+      shortcut={getShortcutFromShortcutName("toggleSceneMenu")}
       aria-label={t("buttons.load")}
     >
       {t("buttons.load")}
