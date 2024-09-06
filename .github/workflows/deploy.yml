@@ -1,0 +1,46 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+
+      - run: yarn install
+      - run: yarn build
+      - run: yarn build:version
+      - run: zip -r build.zip ./excalidraw-app/build
+
+      - name: copy build artifacts to remote server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: 22
+          source: "./build.zip"
+          target: ${{ secrets.DEPLOY_PATH }}
+
+      - name: unpack and deploy
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: 22
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            unzip build.zip -d build-staging
+            rm -r build/*
+            cp -r build-staging/excalidraw-app/build/* build/
+            rm -r build-staging
+            rm build.zip
